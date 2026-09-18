@@ -1,0 +1,600 @@
+// ── Variables ────────────────────────────────────────────────────────────────
+$bg-page:        #0d1117;
+$bg-card:        rgba(22, 27, 34, 0.95);
+$bg-panel:       #171e2c;
+$bg-input:       #1b2334;
+$border-color:   rgba(255, 255, 255, 0.09);
+$text-primary:   #e6edf3;
+$text-muted:     #8b949e;
+$accent:         #ff2d78;
+$accent-hover:   #ff4088;
+$badge-required: #ff2d78;
+$badge-best:     #a855f7;
+$info-bg:        rgba(30, 48, 80, 0.4);
+$info-border:    rgba(66, 122, 204, 0.3);
+$font-stack:     'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// ── Page Shell ───────────────────────────────────────────────────────────────
+.home-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: $bg-page;
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 45, 120, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+    color: $text-primary;
+    font-family: $font-stack;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2rem 4rem;
+    gap: 2rem;
+}
+
+// ── Top Navbar ────────────────────────────────────────────────────────────────
+.top-navbar {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: rgba(22, 27, 34, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid $border-color;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+
+    .brand-group {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff2d78, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(255, 45, 120, 0.35);
+
+            svg {
+                width: 17px;
+                height: 17px;
+            }
+        }
+
+        .brand-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: $text-primary;
+            letter-spacing: -0.02em;
+        }
+    }
+
+    .user-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .user-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0.3rem 0.75rem;
+        border-radius: 2rem;
+
+        .avatar-initial {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .username-display {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: $text-primary;
+        }
+    }
+
+    .logout-btn {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.8rem;
+        border-radius: 0.6rem;
+    }
+}
+
+// ── Error Banner ──────────────────────────────────────────────────────────────
+.error-banner {
+    width: 100%;
+    max-width: 960px;
+    background: rgba(248, 81, 73, 0.12);
+    border: 1px solid rgba(248, 81, 73, 0.35);
+    color: #ff7b72;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+// ── Page Header ──────────────────────────────────────────────────────────────
+.page-header {
+    text-align: center;
+    max-width: 680px;
+
+    h1 {
+        font-size: 2.35rem;
+        font-weight: 800;
+        margin-bottom: 0.65rem;
+        color: $text-primary;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+    }
+
+    p {
+        color: $text-muted;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .highlight {
+        background: linear-gradient(135deg, #ff2d78 0%, #ff6b9d 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+// ── Main Card ─────────────────────────────────────────────────────────────────
+.interview-card {
+    width: 100%;
+    max-width: 960px;
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+
+    &__body {
+        display: flex;
+        min-height: 520px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.75rem;
+        background: rgba(18, 22, 29, 0.8);
+        border-top: 1px solid $border-color;
+
+        .footer-info {
+            font-size: 0.825rem;
+            color: $text-muted;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .pulse-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: #3fb950;
+                box-shadow: 0 0 8px rgba(63, 185, 80, 0.6);
+            }
+        }
+    }
+}
+
+// ── Panels ────────────────────────────────────────────────────────────────────
+.panel-divider {
+    width: 1px;
+    background-color: $border-color;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 1px;
+    }
+}
+
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.75rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.25rem;
+
+        h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: $text-primary;
+            flex: 1;
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        color: $accent;
+    }
+
+    &__textarea {
+        flex: 1;
+        width: 100%;
+        background-color: $bg-input;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 0.85rem 1.1rem;
+        color: $text-primary;
+        font-family: $font-stack;
+        font-size: 0.9rem;
+        resize: none;
+        outline: none;
+        transition: all 0.2s ease;
+        line-height: 1.6;
+
+        &::placeholder {
+            color: #57606a;
+        }
+
+        &:focus {
+            border-color: $accent;
+            box-shadow: 0 0 0 3px rgba(255, 45, 120, 0.15);
+            background-color: #202a3f;
+        }
+
+        &--short {
+            flex: unset;
+            height: 96px;
+        }
+    }
+
+    &--left {
+        position: relative;
+
+        .char-counter {
+            position: absolute;
+            bottom: 2.25rem;
+            right: 2.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: $text-muted;
+            background: rgba(13, 17, 23, 0.8);
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.4rem;
+            pointer-events: none;
+        }
+    }
+
+    &--right {
+        gap: 0.85rem;
+    }
+}
+
+// ── Badges ────────────────────────────────────────────────────────────────────
+.badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    &--required {
+        background-color: rgba($badge-required, 0.15);
+        color: $badge-required;
+        border: 1px solid rgba($badge-required, 0.35);
+    }
+
+    &--best {
+        background-color: rgba($badge-best, 0.15);
+        color: #c084fc;
+        border: 1px solid rgba($badge-best, 0.35);
+    }
+}
+
+// ── Section Label ─────────────────────────────────────────────────────────────
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 0.15rem;
+}
+
+// ── Dropzone ──────────────────────────────────────────────────────────────────
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1.4rem 1rem;
+    background-color: $bg-input;
+    border: 2px dashed rgba(255, 255, 255, 0.14);
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: $accent;
+        background-color: rgba(255, 45, 120, 0.04);
+    }
+
+    &--has-file {
+        border-color: rgba(63, 185, 80, 0.5);
+        background-color: rgba(63, 185, 80, 0.06);
+
+        &:hover {
+            border-color: #3fb950;
+        }
+    }
+
+    &__icon {
+        color: $accent;
+        margin-bottom: 0.15rem;
+    }
+
+    &__title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: $text-primary;
+        margin: 0;
+    }
+
+    &__subtitle {
+        font-size: 0.75rem;
+        color: $text-muted;
+        margin: 0;
+    }
+}
+
+// ── OR Divider ────────────────────────────────────────────────────────────────
+.or-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: $text-muted;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: $border-color;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+// ── Self Description ──────────────────────────────────────────────────────────
+.self-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+// ── Info Box ──────────────────────────────────────────────────────────────────
+.info-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.75rem 1rem;
+    background-color: $info-bg;
+    border: 1px solid $info-border;
+    border-radius: 0.65rem;
+
+    &__icon {
+        flex-shrink: 0;
+        color: #58a6ff;
+        margin-top: 2px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #9ecbff;
+        line-height: 1.5;
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+    }
+}
+
+// ── Generate Button ───────────────────────────────────────────────────────────
+.generate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.6rem;
+    background: linear-gradient(135deg, #ff2d78 0%, #d81b60 100%);
+    color: #fff;
+    font-size: 0.925rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.65rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 45, 120, 0.4);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: $font-stack;
+
+    &:hover {
+        background: linear-gradient(135deg, #ff4088 0%, #e91e63 100%);
+        box-shadow: 0 6px 20px rgba(255, 45, 120, 0.55);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+// ── Recent Reports ────────────────────────────────────────────────────────────
+.recent-reports {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 960px;
+    margin-top: 1rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: $text-primary;
+            letter-spacing: -0.01em;
+        }
+
+        .recent-count {
+            font-size: 0.75rem;
+            color: $text-muted;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid $border-color;
+            padding: 0.2rem 0.65rem;
+            border-radius: 2rem;
+        }
+    }
+
+    .reports-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+
+        .report-item {
+            background-color: $bg-card;
+            border: 1px solid $border-color;
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                border-color: rgba(255, 45, 120, 0.4);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+                .report-view-link {
+                    color: $accent;
+                }
+            }
+
+            &__top {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 0.5rem;
+
+                h3 {
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    color: $text-primary;
+                    margin: 0;
+                    line-height: 1.4;
+                }
+            }
+
+            .match-score-badge {
+                font-size: 0.75rem;
+                font-weight: 700;
+                padding: 0.2rem 0.55rem;
+                border-radius: 0.4rem;
+                white-space: nowrap;
+
+                &.score--high {
+                    color: #3fb950;
+                    background: rgba(63, 185, 80, 0.12);
+                    border: 1px solid rgba(63, 185, 80, 0.3);
+                }
+
+                &.score--mid {
+                    color: #f5a623;
+                    background: rgba(245, 166, 35, 0.12);
+                    border: 1px solid rgba(245, 166, 35, 0.3);
+                }
+
+                &.score--low {
+                    color: #ff4d4d;
+                    background: rgba(255, 77, 77, 0.12);
+                    border: 1px solid rgba(255, 77, 77, 0.3);
+                }
+            }
+
+            .report-meta {
+                font-size: 0.775rem;
+                color: $text-muted;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+            }
+
+            .report-view-link {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: #8b949e;
+                margin-top: auto;
+                transition: color 0.2s ease;
+            }
+        }
+    }
+}
+
+// ── Page Footer ───────────────────────────────────────────────────────────────
+.page-footer {
+    display: flex;
+    justify-content: center;
+    color: #484f58;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
